@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Electralyzed));
             this.MStrip = new System.Windows.Forms.MenuStrip();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,8 +35,6 @@
             this.tweakCompatabilitySheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dEBDownloaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.FI_Timer = new System.Windows.Forms.Timer(this.components);
-            this.FO_Timer = new System.Windows.Forms.Timer(this.components);
             this.DEB_Label = new System.Windows.Forms.Label();
             this.DEB_Separator = new Bunifu.Framework.UI.BunifuSeparator();
             this.DEB_TextBox = new Bunifu.Framework.UI.BunifuMaterialTextbox();
@@ -109,15 +106,6 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // FI_Timer
-            // 
-            this.FI_Timer.Interval = 25;
-            // 
-            // FO_Timer
-            // 
-            this.FO_Timer.Interval = 25;
-            this.FO_Timer.Tick += new System.EventHandler(this.FO_Timer_Tick);
-            // 
             // DEB_Label
             // 
             this.DEB_Label.AutoSize = true;
@@ -162,7 +150,6 @@
             this.DEB_TextBox.TabIndex = 3;
             this.DEB_TextBox.Text = "C:\\";
             this.DEB_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.DEB_TextBox.OnValueChanged += new System.EventHandler(this.DEB_TextBox_OnValueChanged);
             // 
             // DEB_Button
             // 
@@ -275,7 +262,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MStrip;
             this.Name = "Electralyzed";
-            this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Electralyzed";
             this.MStrip.ResumeLayout(false);
@@ -293,8 +279,6 @@
         private System.Windows.Forms.ToolStripMenuItem tweakCompatabilitySheetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dEBDownloaderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.Timer FI_Timer;
-        private System.Windows.Forms.Timer FO_Timer;
         private System.Windows.Forms.Label DEB_Label;
         private Bunifu.Framework.UI.BunifuSeparator DEB_Separator;
         private Bunifu.Framework.UI.BunifuMaterialTextbox DEB_TextBox;

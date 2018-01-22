@@ -29,31 +29,11 @@ namespace Electralyzed
         private void Electralyzed_Load(object sender, EventArgs e)
         {
             VerLabel.Text += Properties.Settings.Default.versionNum;
-            FI_Timer.Start();
-        }
-
-        private void FI_Timer_Tick(object sender, EventArgs e)
-        {
-            this.Opacity += .1;
-
-            if (this.Opacity == 1)
-                FI_Timer.Stop();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FO_Timer.Start();
-        }
-
-        private void FO_Timer_Tick(object sender, EventArgs e)
-        {
-            this.Opacity -= .1;
-
-            if (this.Opacity == 0)
-            {
-                FO_Timer.Stop();
-                this.Close();
-            }
+            Environment.Exit(0);
         }
 
         private void tweakCompatabilitySheetToolStripMenuItem_Click(object sender, EventArgs e)
@@ -74,37 +54,44 @@ namespace Electralyzed
         private void DEB_Button_Click(object sender, EventArgs e)
         {
             OpenFileDialog DEBFileDialog = new OpenFileDialog();
-            DEBFileDialog.InitialDirectory = @"C:\" + Environment.SpecialFolder.Desktop;
+            DEBFileDialog.InitialDirectory = @"C:\" + Environment.SpecialFolder.MyComputer;
             DEBFileDialog.Title = "Select a .deb file";
             DEBFileDialog.DefaultExt = "deb";
             DEBFileDialog.Filter = "deb files (*.deb)|*.deb";
 
             if (DEBFileDialog.ShowDialog() == DialogResult.OK)
+            {
                 DEB_TextBox.Text = DEBFileDialog.FileName;
-        }
 
-        private void DEB_TextBox_OnValueChanged(object sender, EventArgs e)
-        {
-            if (DEB_TextBox.Text == @"C:\")
-            {
-                Install_Button.Enabled = false;
-                Uninstall_Button.Enabled = false;
-            }
-            else
-            {
-                Install_Button.Enabled = false;
-                Uninstall_Button.Enabled = false;
+                if (DEB_TextBox.Text == @"C:\")
+                {
+                    Install_Button.Enabled = false;
+                    Uninstall_Button.Enabled = false;
+                }
+                else
+                {
+                    Install_Button.Enabled = true;
+                    Uninstall_Button.Enabled = true;
+                }
             }
         }
 
         private void Install_Button_Click(object sender, EventArgs e)
         {
+            exitToolStripMenuItem.Enabled = false;
+            DEB_Button.Enabled = false;
+            Install_Button.Enabled = false;
+            Uninstall_Button.Enabled = false;
             action = "1";
             StartUnpack();
         }
 
         private void Uninstall_Button_Click(object sender, EventArgs e)
         {
+            exitToolStripMenuItem.Enabled = false;
+            DEB_Button.Enabled = false;
+            Install_Button.Enabled = false;
+            Uninstall_Button.Enabled = false;
             action = "2";
             StartUnpack();
         }

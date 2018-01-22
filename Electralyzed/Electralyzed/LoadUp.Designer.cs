@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoadUp));
             this.GPanel = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.C_Label = new System.Windows.Forms.Label();
             this.Connect_Button = new System.Windows.Forms.Button();
             this.Password_TextBox = new System.Windows.Forms.TextBox();
             this.Username_TextBox = new System.Windows.Forms.TextBox();
@@ -43,9 +44,6 @@
             this.IP_Separator = new Bunifu.Framework.UI.BunifuSeparator();
             this.VerLabel = new System.Windows.Forms.Label();
             this.Elipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.FI_Timer = new System.Windows.Forms.Timer(this.components);
-            this.FO_Timer = new System.Windows.Forms.Timer(this.components);
-            this.C_Label = new System.Windows.Forms.Label();
             this.GPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,6 +73,17 @@
             this.GPanel.Quality = 10;
             this.GPanel.Size = new System.Drawing.Size(500, 300);
             this.GPanel.TabIndex = 0;
+            // 
+            // C_Label
+            // 
+            this.C_Label.AutoSize = true;
+            this.C_Label.BackColor = System.Drawing.Color.Transparent;
+            this.C_Label.ForeColor = System.Drawing.Color.White;
+            this.C_Label.Location = new System.Drawing.Point(230, 278);
+            this.C_Label.Name = "C_Label";
+            this.C_Label.Size = new System.Drawing.Size(41, 13);
+            this.C_Label.TabIndex = 5;
+            this.C_Label.Text = "Ready!";
             // 
             // Connect_Button
             // 
@@ -217,27 +226,6 @@
             this.Elipse.ElipseRadius = 5;
             this.Elipse.TargetControl = this;
             // 
-            // FI_Timer
-            // 
-            this.FI_Timer.Interval = 25;
-            this.FI_Timer.Tick += new System.EventHandler(this.FI_Timer_Tick);
-            // 
-            // FO_Timer
-            // 
-            this.FO_Timer.Interval = 25;
-            this.FO_Timer.Tick += new System.EventHandler(this.FO_Timer_Tick);
-            // 
-            // C_Label
-            // 
-            this.C_Label.AutoSize = true;
-            this.C_Label.BackColor = System.Drawing.Color.Transparent;
-            this.C_Label.ForeColor = System.Drawing.Color.White;
-            this.C_Label.Location = new System.Drawing.Point(230, 278);
-            this.C_Label.Name = "C_Label";
-            this.C_Label.Size = new System.Drawing.Size(41, 13);
-            this.C_Label.TabIndex = 5;
-            this.C_Label.Text = "Ready!";
-            // 
             // LoadUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -249,7 +237,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoadUp";
-            this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Electralyzed";
             this.Load += new System.EventHandler(this.LoadUp_Load);
@@ -274,8 +261,6 @@
         private System.Windows.Forms.Label IP_Label;
         private Bunifu.Framework.UI.BunifuSeparator IP_Separator;
         private Bunifu.Framework.UI.BunifuElipse Elipse;
-        private System.Windows.Forms.Timer FI_Timer;
-        private System.Windows.Forms.Timer FO_Timer;
         private System.Windows.Forms.Label C_Label;
     }
 }

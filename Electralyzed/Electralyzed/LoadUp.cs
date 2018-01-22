@@ -31,15 +31,6 @@ namespace Electralyzed
             }
 
             VerLabel.Text += Properties.Settings.Default.versionNum;
-            FI_Timer.Start();
-        }
-
-        private void FI_Timer_Tick(object sender, EventArgs e)
-        {
-            this.Opacity += .1;
-
-            if (this.Opacity == 1)
-                FI_Timer.Stop();
         }
 
         private void Connect_Button_Click(object sender, EventArgs e)
@@ -64,19 +55,7 @@ namespace Electralyzed
                 session.Open(sessionOptions);
                 C_Label.Text = "Success!";
                 session.Close();
-                FO_Timer.Start();
-            }
-        }
-
-        private void FO_Timer_Tick(object sender, EventArgs e)
-        {
-            this.Opacity -= .1;
-
-            if (this.Opacity == 0)
-            {
-                FO_Timer.Stop();
-
-                this.Close();
+                this.Hide();
                 Electralyzed EM = new Electralyzed(IP_TextBox.Text, Username_TextBox.Text, Password_TextBox.Text);
                 EM.ShowDialog();
             }
