@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SevenZipExtractor;
+using WinSCP;
 
 namespace Electralyzed
 {
@@ -24,12 +25,7 @@ namespace Electralyzed
         }
 
         //GLOBAL VARIABLES
-        string ip, username, password, action, EDir = @"C:\E_Temp";
-
-        private void Electralyzed_Load(object sender, EventArgs e)
-        {
-            VerLabel.Text += Properties.Settings.Default.versionNum;
-        }
+        string ip, username, password, action = "0", EDir = @"C:\E_Temp";
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -78,21 +74,22 @@ namespace Electralyzed
 
         private void Install_Button_Click(object sender, EventArgs e)
         {
-            exitToolStripMenuItem.Enabled = false;
-            DEB_Button.Enabled = false;
-            Install_Button.Enabled = false;
-            Uninstall_Button.Enabled = false;
             action = "1";
-            StartUnpack();
+            DisabledState();
         }
 
         private void Uninstall_Button_Click(object sender, EventArgs e)
+        {
+            action = "2";
+            DisabledState();
+        }
+
+        private void DisabledState()
         {
             exitToolStripMenuItem.Enabled = false;
             DEB_Button.Enabled = false;
             Install_Button.Enabled = false;
             Uninstall_Button.Enabled = false;
-            action = "2";
             StartUnpack();
         }
 
@@ -126,7 +123,7 @@ namespace Electralyzed
             else if (Directory.Exists(EDir))
             {
                 O_TextBox.AppendText(Environment.NewLine + @"'\E_temp' exists! Clearing the directory...");
-                Directory.Delete(EDir);
+                Directory.Delete(EDir, true);
                 Directory.CreateDirectory(EDir);
                 O_TextBox.AppendText(Environment.NewLine + "Cleared!");
             }
@@ -179,7 +176,47 @@ namespace Electralyzed
 
         private void StartAction()
         {
+            //Reconnect
             O_TextBox.AppendText(Environment.NewLine + "Re-establishing connection to iDevice...");
+            SessionOptions sessionOptions = new SessionOptions
+            {
+                Protocol = Protocol.Sftp,
+                HostName = ip,
+                UserName = username,
+                Password = password,
+                GiveUpSecurityAndAcceptAnySshHostKey = true
+            };
+            Session session = new Session();
+            session.Open(sessionOptions);
+            O_TextBox.AppendText(Environment.NewLine + "Reconnected!");
+
+
+            //Test session
+            O_TextBox.AppendText(Environment.NewLine + "Attempting to kill 'SpringBoard'...");
+            session.ExecuteCommand("killall -9 SpringBoard");
+            O_TextBox.AppendText(Environment.NewLine + "Killed!");
+
+
+            //Finished
+            session.Close();
+            Cleanup();
+            NormalState();
+        }
+
+        private void Cleanup()
+        {
+            O_TextBox.AppendText(Environment.NewLine + "Cleaning up...");
+            Directory.Delete(EDir, true);
+        }
+
+        private void NormalState()
+        {
+            exitToolStripMenuItem.Enabled = true;
+            DEB_Button.Enabled = true;
+            Install_Button.Enabled = true;
+            Uninstall_Button.Enabled = true;
+            O_TextBox.Text = "Ready!";
+            DEB_TextBox.Text = @"C:\";
         }
     }
 }

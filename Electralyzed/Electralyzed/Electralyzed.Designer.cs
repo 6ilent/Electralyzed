@@ -44,7 +44,6 @@
             this.Install_Button = new System.Windows.Forms.Button();
             this.Uninstall_Button = new System.Windows.Forms.Button();
             this.O_TextBox = new System.Windows.Forms.TextBox();
-            this.VerLabel = new System.Windows.Forms.Label();
             this.MStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -229,24 +228,12 @@
             this.O_TextBox.Text = "Ready when you are!";
             this.O_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // VerLabel
-            // 
-            this.VerLabel.AutoSize = true;
-            this.VerLabel.BackColor = System.Drawing.Color.Transparent;
-            this.VerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VerLabel.Location = new System.Drawing.Point(9, 359);
-            this.VerLabel.Name = "VerLabel";
-            this.VerLabel.Size = new System.Drawing.Size(45, 13);
-            this.VerLabel.TabIndex = 6;
-            this.VerLabel.Text = "Version ";
-            // 
             // Electralyzed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 381);
-            this.Controls.Add(this.VerLabel);
             this.Controls.Add(this.O_TextBox);
             this.Controls.Add(this.Uninstall_Button);
             this.Controls.Add(this.Install_Button);
@@ -288,6 +275,5 @@
         private System.Windows.Forms.Button Install_Button;
         private System.Windows.Forms.Button Uninstall_Button;
         private System.Windows.Forms.TextBox O_TextBox;
-        private System.Windows.Forms.Label VerLabel;
     }
 }
