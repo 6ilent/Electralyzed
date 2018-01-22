@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Electralyzed.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="versionNum" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1.0.0 BETA</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

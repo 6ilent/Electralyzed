@@ -1,0 +1,17 @@
+C:\Users\Velasjos005\Desktop\Electralyzed\Electralyzed\bin\Debug\WinSCP.exe
+C:\Users\Velasjos005\Desktop\Electralyzed\Electralyzed\bin\Debug\x64\7z.dll
+C:\Users\Velasjos005\Desktop\Electralyzed\Electralyzed\bin\Debug\x86\7z.dll
+C:\Users\Velasjos005\Desktop\Electralyzed\Electralyzed\bin\Debug\Electralyzed.exe.config
+C:\Users\Velasjos005\Desktop\Electralyzed\Electralyzed\bin\Debug\Electralyzed.exe
+C:\Users\Velasjos005\Desktop\Electralyzed\Electralyzed\bin\Debug\Electralyzed.pdb
+C:\Users\Velasjos005\Desktop\Electralyzed\Electralyzed\bin\Debug\Bunifu_UI_v1.5.3.dll
+C:\Users\Velasjos005\Desktop\Electralyzed\Electralyzed\bin\Debug\SevenZipExtractor.dll
+C:\Users\Velasjos005\Desktop\Electralyzed\Electralyzed\bin\Debug\WinSCPnet.dll
+C:\Users\Velasjos005\Desktop\Electralyzed\Electralyzed\obj\Debug\Electralyzed.csprojResolveAssemblyReference.cache
+C:\Users\Velasjos005\Desktop\Electralyzed\Electralyzed\obj\Debug\Electralyzed.Electralyzed.resources
+C:\Users\Velasjos005\Desktop\Electralyzed\Electralyzed\obj\Debug\Electralyzed.LoadUp.resources
+C:\Users\Velasjos005\Desktop\Electralyzed\Electralyzed\obj\Debug\Electralyzed.Properties.Resources.resources
+C:\Users\Velasjos005\Desktop\Electralyzed\Electralyzed\obj\Debug\Electralyzed.csproj.GenerateResource.Cache
+C:\Users\Velasjos005\Desktop\Electralyzed\Electralyzed\obj\Debug\Electralyzed.csproj.CoreCompileInputs.cache
+C:\Users\Velasjos005\Desktop\Electralyzed\Electralyzed\obj\Debug\Electralyzed.exe
+C:\Users\Velasjos005\Desktop\Electralyzed\Electralyzed\obj\Debug\Electralyzed.pdb
