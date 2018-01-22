@@ -1,5 +1,5 @@
 # Electralyzed
-## Install Jailbreak tweaks without the hassle (Electra [iOS 11 - 11.2.1] Jailbreak Toolkit)
+## Install Jailbreak tweaks without the hassle (Electra [iOS 11 - 11.1.2] Jailbreak Toolkit)
 ### Big thanks to @coolstarorg for Electra Jailbreak Toolkit!
 ---
 By 6ilent @Zer0Entry
