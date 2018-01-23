@@ -44,6 +44,10 @@
             this.Install_Button = new System.Windows.Forms.Button();
             this.Uninstall_Button = new System.Windows.Forms.Button();
             this.O_TextBox = new System.Windows.Forms.TextBox();
+            this.otherToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quickCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.respringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uICacheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +56,8 @@
             this.MStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
             this.MStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.otherToolsToolStripMenuItem});
             this.MStrip.Location = new System.Drawing.Point(0, 0);
             this.MStrip.Name = "MStrip";
             this.MStrip.Size = new System.Drawing.Size(784, 24);
@@ -197,7 +202,7 @@
             this.Install_Button.Name = "Install_Button";
             this.Install_Button.Size = new System.Drawing.Size(75, 23);
             this.Install_Button.TabIndex = 4;
-            this.Install_Button.Text = "Select";
+            this.Install_Button.Text = "Install";
             this.Install_Button.UseVisualStyleBackColor = false;
             this.Install_Button.Click += new System.EventHandler(this.Install_Button_Click);
             // 
@@ -211,7 +216,7 @@
             this.Uninstall_Button.Name = "Uninstall_Button";
             this.Uninstall_Button.Size = new System.Drawing.Size(75, 23);
             this.Uninstall_Button.TabIndex = 4;
-            this.Uninstall_Button.Text = "Select";
+            this.Uninstall_Button.Text = "Uninstall";
             this.Uninstall_Button.UseVisualStyleBackColor = false;
             this.Uninstall_Button.Click += new System.EventHandler(this.Uninstall_Button_Click);
             // 
@@ -219,14 +224,52 @@
             // 
             this.O_TextBox.BackColor = System.Drawing.Color.White;
             this.O_TextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
-            this.O_TextBox.Location = new System.Drawing.Point(433, 27);
+            this.O_TextBox.Location = new System.Drawing.Point(338, 27);
             this.O_TextBox.Multiline = true;
             this.O_TextBox.Name = "O_TextBox";
             this.O_TextBox.ReadOnly = true;
-            this.O_TextBox.Size = new System.Drawing.Size(340, 342);
+            this.O_TextBox.Size = new System.Drawing.Size(435, 342);
             this.O_TextBox.TabIndex = 5;
             this.O_TextBox.Text = "Ready when you are!";
             this.O_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // otherToolsToolStripMenuItem
+            // 
+            this.otherToolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quickCommandsToolStripMenuItem});
+            this.otherToolsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.otherToolsToolStripMenuItem.Name = "otherToolsToolStripMenuItem";
+            this.otherToolsToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.otherToolsToolStripMenuItem.Text = "Other Tools";
+            // 
+            // quickCommandsToolStripMenuItem
+            // 
+            this.quickCommandsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.quickCommandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.respringToolStripMenuItem,
+            this.uICacheToolStripMenuItem});
+            this.quickCommandsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.quickCommandsToolStripMenuItem.Name = "quickCommandsToolStripMenuItem";
+            this.quickCommandsToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.quickCommandsToolStripMenuItem.Text = "Quick Commands";
+            // 
+            // respringToolStripMenuItem
+            // 
+            this.respringToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.respringToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.respringToolStripMenuItem.Name = "respringToolStripMenuItem";
+            this.respringToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.respringToolStripMenuItem.Text = "Respring";
+            this.respringToolStripMenuItem.Click += new System.EventHandler(this.respringToolStripMenuItem_Click);
+            // 
+            // uICacheToolStripMenuItem
+            // 
+            this.uICacheToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.uICacheToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.uICacheToolStripMenuItem.Name = "uICacheToolStripMenuItem";
+            this.uICacheToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.uICacheToolStripMenuItem.Text = "UICache";
+            this.uICacheToolStripMenuItem.Click += new System.EventHandler(this.uICacheToolStripMenuItem_Click);
             // 
             // Electralyzed
             // 
@@ -275,5 +318,9 @@
         private System.Windows.Forms.Button Install_Button;
         private System.Windows.Forms.Button Uninstall_Button;
         private System.Windows.Forms.TextBox O_TextBox;
+        private System.Windows.Forms.ToolStripMenuItem otherToolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem quickCommandsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem respringToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem uICacheToolStripMenuItem;
     }
 }

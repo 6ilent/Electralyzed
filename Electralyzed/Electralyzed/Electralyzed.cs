@@ -29,7 +29,7 @@ namespace Electralyzed
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            Application.Exit();
         }
 
         private void tweakCompatabilitySheetToolStripMenuItem_Click(object sender, EventArgs e)
@@ -84,12 +84,51 @@ namespace Electralyzed
             DisabledState();
         }
 
+        private void respringToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string QComm = "respring";
+            QuickCommands(QComm);
+        }
+
+        private void uICacheToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string QComm = "uicache";
+            QuickCommands(QComm);
+        }
+
+        private void QuickCommands(string QComm)
+        {
+            SessionOptions sessionOptions = new SessionOptions
+            {
+                Protocol = Protocol.Sftp,
+                HostName = ip,
+                UserName = username,
+                Password = password,
+                GiveUpSecurityAndAcceptAnySshHostKey = true
+            };
+            Session session = new Session();
+            session.Open(sessionOptions);
+
+            if (QComm == "respring")
+            {
+                session.ExecuteCommand("killall -9 SpringBoard");
+                MessageBox.Show("Respringing!", "Done!", MessageBoxButtons.OK);
+            }
+            else if (QComm == "uicache")
+            {
+                session.ExecuteCommand("uicache");
+                MessageBox.Show("Running UICache! (May take up to 30 seconds)", "Done!", MessageBoxButtons.OK);
+            }
+            session.Close();
+        }
+
         private void DisabledState()
         {
             exitToolStripMenuItem.Enabled = false;
             DEB_Button.Enabled = false;
             Install_Button.Enabled = false;
             Uninstall_Button.Enabled = false;
+            otherToolsToolStripMenuItem.Enabled = false;
             StartUnpack();
         }
 
@@ -113,6 +152,7 @@ namespace Electralyzed
 
         private void Check4Temp()
         {
+            O_TextBox.AppendText(Environment.NewLine + "");
             O_TextBox.AppendText(Environment.NewLine + @"Checking if '\E_temp' exists...");
             if (!Directory.Exists(EDir))
             {
@@ -131,6 +171,7 @@ namespace Electralyzed
 
         private void ExtractDEB()
         {
+            O_TextBox.AppendText(Environment.NewLine + "");
             O_TextBox.AppendText(Environment.NewLine + "Unpacking '" + DEB_TextBox.Text + "'...");
             using (ArchiveFile DEBFile = new ArchiveFile(DEB_TextBox.Text))
             {
@@ -141,6 +182,7 @@ namespace Electralyzed
 
         private void ExtractLZMA()
         {
+            O_TextBox.AppendText(Environment.NewLine + "");
             O_TextBox.AppendText(Environment.NewLine + "Unpacking 'data.tar.lzma'...");
             var processStartInfo = new ProcessStartInfo();
             processStartInfo.FileName = @"C:\Program Files\7-Zip\7z.exe";
@@ -166,6 +208,7 @@ namespace Electralyzed
 
         private void ExtractDATA()
         {
+            O_TextBox.AppendText(Environment.NewLine + "");
             O_TextBox.AppendText(Environment.NewLine + "Unpacking 'data.tar'...");
             using (ArchiveFile tardataFile = new ArchiveFile(@"C:\E_temp\data.tar"))
             {
@@ -177,6 +220,7 @@ namespace Electralyzed
         private void StartAction()
         {
             //Reconnect
+            O_TextBox.AppendText(Environment.NewLine + "");
             O_TextBox.AppendText(Environment.NewLine + "Re-establishing connection to iDevice...");
             SessionOptions sessionOptions = new SessionOptions
             {
@@ -190,21 +234,213 @@ namespace Electralyzed
             session.Open(sessionOptions);
             O_TextBox.AppendText(Environment.NewLine + "Reconnected!");
 
+            if (action == "1")
+            {
+                FINALINSTALL(session);
+            }
+            else if (action == "2")
+            {
+                FINALUNINSTALL(session);
+            }
 
-            //Test session
-            O_TextBox.AppendText(Environment.NewLine + "Attempting to kill 'SpringBoard'...");
-            session.ExecuteCommand("killall -9 SpringBoard");
-            O_TextBox.AppendText(Environment.NewLine + "Killed!");
-
-
-            //Finished
-            session.Close();
+            //FINISHED
+            //Asks for respring
+            Respring(session);
             Cleanup();
             NormalState();
+            session.Close();
+        }
+
+        private void FINALINSTALL(Session session)
+        {
+            //THEMES INSTALLER
+            O_TextBox.AppendText(Environment.NewLine + "");
+            if (Directory.Exists(EDir + @"\Library\Themes\"))
+            {
+                O_TextBox.AppendText(Environment.NewLine + "Local themes folder found! Installing...");
+                string[] themesArray = Directory.GetDirectories(EDir + @"\Library\Themes\");
+                for (int themes  = 0; themes < themesArray.Length; themes++)
+                {
+                    O_TextBox.AppendText(Environment.NewLine + "Placing " + themesArray[themes] + "...");
+                    session.PutFiles(themesArray[themes], "/System/Library/Themes/");
+                    O_TextBox.AppendText(Environment.NewLine + "Placed " + themesArray[themes]);
+                }
+                O_TextBox.AppendText(Environment.NewLine + "Finished installing " + DEB_TextBox.Text + "!");
+            }
+            else
+            {
+                O_TextBox.AppendText(Environment.NewLine + "No Themes folder found. (Probably not a theme.)");
+            }
+
+            //TWEAK - MOBILESUBSTRATE 
+            O_TextBox.AppendText(Environment.NewLine + "");
+            if (Directory.Exists(EDir + @"\Library\MobileSubstrate\DynamicLibraries\"))
+            {
+                O_TextBox.AppendText(Environment.NewLine + "Local MobileSubstrate folder found! Installing...");
+                string[] MSArray = Directory.GetFiles(EDir + @"\Library\MobileSubstrate\DynamicLibraries\");
+                for (int MS = 0; MS < MSArray.Length; MS++)
+                {
+                    O_TextBox.AppendText(Environment.NewLine + "Placing " + MSArray[MS] + "...");
+                    session.PutFiles(MSArray[MS], "/usr/lib/SBInject/");
+                    O_TextBox.AppendText(Environment.NewLine + "Placed " + MSArray[MS]);
+                }
+                O_TextBox.AppendText(Environment.NewLine + "Finished installing MobileSubstrate!");
+            }
+            else
+            {
+                O_TextBox.AppendText(Environment.NewLine + "No MobileSubstrate found.");
+            }
+
+            //TWEAK - PREFERENCELOADER
+            O_TextBox.AppendText(Environment.NewLine + "");
+            if (Directory.Exists(EDir + @"\Library\PreferenceLoader\Preferences\"))
+            {
+                O_TextBox.AppendText(Environment.NewLine + "Local PreferenceLoader folder found! Installing...");
+                string[] PLArray = Directory.GetFiles(EDir + @"\Library\PreferenceLoader\Preferences\");
+                for (int PL = 0; PL < PLArray.Length; PL++)
+                {
+                    O_TextBox.AppendText(Environment.NewLine + "Placing " + PLArray[PL] + "...");
+                    session.PutFiles(PLArray[PL], "/bootstrap/Library/PreferenceLoader/Preferences/");
+                    O_TextBox.AppendText(Environment.NewLine + "Placed " + PLArray[PL]);
+                }
+                O_TextBox.AppendText(Environment.NewLine + "Finished installing PreferenceLoader!");
+            }
+            else
+            {
+                O_TextBox.AppendText(Environment.NewLine + "No PreferenceLoader found.");
+            }
+
+            //TWEAK - PREFERENCEBUNDLES
+            O_TextBox.AppendText(Environment.NewLine + "");
+            if (Directory.Exists(EDir + @"\Library\PreferenceBundles\"))
+            {
+                O_TextBox.AppendText(Environment.NewLine + "Local PreferenceBundles folder found! Installing...");
+                string[] PBArray = Directory.GetDirectories(EDir + @"\Library\PreferenceBundles\");
+                for (int PB = 0; PB < PBArray.Length; PB++)
+                {
+                    O_TextBox.AppendText(Environment.NewLine + "Placing " + PBArray[PB] + "...");
+                    session.PutFiles(PBArray[PB], "/bootstrap/Library/PreferenceBundles/");
+                    O_TextBox.AppendText(Environment.NewLine + "Placed " + PBArray[PB]);
+                }
+                O_TextBox.AppendText(Environment.NewLine + "Finished installing PreferenceBundles!");
+            }
+            else
+            {
+                O_TextBox.AppendText(Environment.NewLine + "No PreferenceBundles found.");
+            }
+
+            //FINISHED!
+            O_TextBox.AppendText(Environment.NewLine + "");
+            O_TextBox.AppendText(Environment.NewLine + "Finished!");
+        }
+
+        private void FINALUNINSTALL(Session session)
+        {
+            //THEMES UNINSTALLER
+            O_TextBox.AppendText(Environment.NewLine + "");
+            if (Directory.Exists(EDir + @"\Library\Themes\"))
+            {
+                O_TextBox.AppendText(Environment.NewLine + "Local themes folder found! Uninstalling...");
+                string[] themesArray = Directory.GetDirectories(EDir + @"\Library\Themes\");
+                string TFolder; //Actual Folder starts on character #25
+                for (int themes = 0; themes < themesArray.Length; themes++)
+                {
+                    TFolder = themesArray[themes].Substring(25);
+                    O_TextBox.AppendText(Environment.NewLine + "Removing " + TFolder + "...");
+                    session.RemoveFiles("/System/Library/Themes/" + TFolder);
+                    O_TextBox.AppendText(Environment.NewLine + "Removed " + TFolder);
+                }
+                O_TextBox.AppendText(Environment.NewLine + "Finished uninstalling " + DEB_TextBox.Text + "!");
+            }
+            else
+            {
+                O_TextBox.AppendText(Environment.NewLine + "No Themes folder found. (Probably not a theme.)");
+            }
+
+            //TWEAK - MOBILESUBSTRATE 
+            O_TextBox.AppendText(Environment.NewLine + "");
+            if (Directory.Exists(EDir + @"\Library\MobileSubstrate\DynamicLibraries\"))
+            {
+                O_TextBox.AppendText(Environment.NewLine + "Local MobileSubstrate folder found! Uninstalling...");
+                string[] MSArray = Directory.GetFiles(EDir + @"\Library\MobileSubstrate\DynamicLibraries\");
+                string MSFile; //Actual File starts on character #51
+                for (int MS = 0; MS < MSArray.Length; MS++)
+                {
+                    MSFile = MSArray[MS].Substring(51);
+                    O_TextBox.AppendText(Environment.NewLine + "Removing " + MSFile + "...");
+                    session.RemoveFiles("/usr/lib/SBInject/" + MSFile);
+                    O_TextBox.AppendText(Environment.NewLine + "Removed " + MSFile);
+                }
+                O_TextBox.AppendText(Environment.NewLine + "Finished uninstalling MobileSubstrate!");
+            }
+            else
+            {
+                O_TextBox.AppendText(Environment.NewLine + "No MobileSubstrate found.");
+            }
+
+            //TWEAK - PREFERENCELOADER
+            O_TextBox.AppendText(Environment.NewLine + "");
+            if (Directory.Exists(EDir + @"\Library\PreferenceLoader\Preferences\"))
+            {
+                O_TextBox.AppendText(Environment.NewLine + "Local PreferenceLoader folder found! Installing...");
+                string[] PLArray = Directory.GetFiles(EDir + @"\Library\PreferenceLoader\Preferences\");
+                string PLFile; //Actual File start on character #47
+                for (int PL = 0; PL < PLArray.Length; PL++)
+                {
+                    PLFile = PLArray[PL].Substring(47);
+                    O_TextBox.AppendText(Environment.NewLine + "Removing " + PLFile + "...");
+                    session.RemoveFiles("/bootstrap/Library/PreferenceLoader/Preferences/" + PLFile);
+                    O_TextBox.AppendText(Environment.NewLine + "Removed " + PLFile);
+                }
+                O_TextBox.AppendText(Environment.NewLine + "Finished uninstalling PreferenceLoader!");
+            }
+            else
+            {
+                O_TextBox.AppendText(Environment.NewLine + "No PreferenceLoader found.");
+            }
+
+            //TWEAK - PREFERENCEBUNDLES
+            O_TextBox.AppendText(Environment.NewLine + "");
+            if (Directory.Exists(EDir + @"\Library\PreferenceBundles\"))
+            {
+                O_TextBox.AppendText(Environment.NewLine + "Local PreferenceBundles folder found! Installing...");
+                string[] PBArray = Directory.GetDirectories(EDir + @"\Library\PreferenceBundles\");
+                string PBFolder; //Actual Folder start on character #36
+                for (int PB = 0; PB < PBArray.Length; PB++)
+                {
+                    PBFolder = PBArray[PB].Substring(36);
+                    O_TextBox.AppendText(Environment.NewLine + "Removing " + PBFolder + "...");
+                    session.RemoveFiles("/bootstrap/Library/PreferenceBundles/" + PBFolder);
+                    O_TextBox.AppendText(Environment.NewLine + "Removed " + PBFolder);
+                }
+                O_TextBox.AppendText(Environment.NewLine + "Finished uninstalling PreferenceBundles!");
+            }
+            else
+            {
+                O_TextBox.AppendText(Environment.NewLine + "No PreferenceBundles found.");
+            }
+
+            //FINISHED!
+            O_TextBox.AppendText(Environment.NewLine + "");
+            O_TextBox.AppendText(Environment.NewLine + "Finished!");
+
+        }
+
+        private void Respring(Session session)
+        {
+            O_TextBox.AppendText(Environment.NewLine + "");
+            DialogResult RespringYN = MessageBox.Show("Do you want me to Respring?", "Respring?", MessageBoxButtons.YesNo);
+            if (RespringYN == DialogResult.Yes)
+            {
+                O_TextBox.AppendText(Environment.NewLine + "Attempting to kill 'SpringBoard'...");
+                session.ExecuteCommand("killall -9 SpringBoard");
+                O_TextBox.AppendText(Environment.NewLine + "Killed!");
+            }
         }
 
         private void Cleanup()
         {
+            O_TextBox.AppendText(Environment.NewLine + "");
             O_TextBox.AppendText(Environment.NewLine + "Cleaning up...");
             Directory.Delete(EDir, true);
         }
@@ -213,10 +449,12 @@ namespace Electralyzed
         {
             exitToolStripMenuItem.Enabled = true;
             DEB_Button.Enabled = true;
-            Install_Button.Enabled = true;
-            Uninstall_Button.Enabled = true;
+            Install_Button.Enabled = false;
+            Uninstall_Button.Enabled = false;
+            otherToolsToolStripMenuItem.Enabled = true;
             O_TextBox.Text = "Ready!";
             DEB_TextBox.Text = @"C:\";
+            action = "0";
         }
     }
 }

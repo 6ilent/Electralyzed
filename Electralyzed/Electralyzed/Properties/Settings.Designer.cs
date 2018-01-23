@@ -25,13 +25,25 @@ namespace Electralyzed.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1.0.0 BETA")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.0.0")]
         public string versionNum {
             get {
                 return ((string)(this["versionNum"]));
             }
             set {
                 this["versionNum"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int CompareversionNum {
+            get {
+                return ((int)(this["CompareversionNum"]));
+            }
+            set {
+                this["CompareversionNum"] = value;
             }
         }
     }

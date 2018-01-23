@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,7 +31,7 @@ namespace Electralyzed
                 MessageBox.Show("This application requires 7zip to be installed! Please install and relaunch!", "ERROR!", MessageBoxButtons.OK);
                 Environment.Exit(0);
             }
-
+            Check4Update();
             VerLabel.Text += Properties.Settings.Default.versionNum;
         }
 
@@ -58,6 +60,26 @@ namespace Electralyzed
                 this.Hide();
                 Electralyzed EM = new Electralyzed(IP_TextBox.Text, Username_TextBox.Text, Password_TextBox.Text);
                 EM.ShowDialog();
+            }
+        }
+
+        private void Check4Update()
+        {
+            using (WebClient UPD = new WebClient())
+            {
+                string UPDVer = UPD.DownloadString("https://raw.githubusercontent.com/6ilent/Electralyzed/master/Electralyzed/Other%20Files/version.txt");
+                int CurVer = Properties.Settings.Default.CompareversionNum;
+                int val = 0;
+                Int32.TryParse(UPDVer, out val);
+                if (val != CurVer)
+                {
+                    DialogResult UPDMessage = MessageBox.Show("Do you want to head over to my Github to download the latest version?", "Outdated Version!", MessageBoxButtons.YesNo);
+                    if (UPDMessage == DialogResult.Yes)
+                    {
+                        Process.Start("https://github.com/6ilent/Electralyzed/releases");
+                        Application.Exit();
+                    }
+                }
             }
         }
     }
