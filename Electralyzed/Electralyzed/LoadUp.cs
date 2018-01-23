@@ -28,11 +28,10 @@ namespace Electralyzed
         {
             if (!File.Exists(@"C:\Program Files\7-Zip\7z.exe"))
             {
-                MessageBox.Show("This application requires 7zip to be installed! Please install and relaunch!", "ERROR!", MessageBoxButtons.OK);
-                Environment.Exit(0);
+                MessageBox.Show(@"This application requires 7zip to be installed! Please install and relaunch! (7Zip must be installed in 'C:\Program Files')", "ERROR!", MessageBoxButtons.OK);
+                Application.Exit();
             }
-            Check4Update();
-            VerLabel.Text += Properties.Settings.Default.versionNum;
+            Ver_Label.Text += Properties.Settings.Default.versionNum;
         }
 
         private void Connect_Button_Click(object sender, EventArgs e)
@@ -63,24 +62,9 @@ namespace Electralyzed
             }
         }
 
-        private void Check4Update()
+        private void UPD_Label_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            using (WebClient UPD = new WebClient())
-            {
-                string UPDVer = UPD.DownloadString("https://raw.githubusercontent.com/6ilent/Electralyzed/master/Electralyzed/Other%20Files/version.txt");
-                int CurVer = Properties.Settings.Default.CompareversionNum;
-                int val = 0;
-                Int32.TryParse(UPDVer, out val);
-                if (val != CurVer)
-                {
-                    DialogResult UPDMessage = MessageBox.Show("Do you want to head over to my Github to download the latest version?", "Outdated Version!", MessageBoxButtons.YesNo);
-                    if (UPDMessage == DialogResult.Yes)
-                    {
-                        Process.Start("https://github.com/6ilent/Electralyzed/releases");
-                        Application.Exit();
-                    }
-                }
-            }
+            Process.Start("https://github.com/6ilent/Electralyzed/releases");
         }
     }
 }

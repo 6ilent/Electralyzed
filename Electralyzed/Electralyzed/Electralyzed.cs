@@ -47,6 +47,11 @@ namespace Electralyzed
             MessageBox.Show("Developed by 6ilent" + Environment.NewLine + "SFTP Protocols By WinSCP" + Environment.NewLine + "File Decompressing Library By 7Zip");
         }
 
+        private void usageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Install:" + Environment.NewLine + "1. Select a DEB you want to install" + Environment.NewLine + "2. Click 'Install'" + Environment.NewLine + "3. Wait for the process to complete" + Environment.NewLine + "4. Done!" + Environment.NewLine + Environment.NewLine + "Uninstall:" + Environment.NewLine + "1. Select the SAME DEB you used for install" + Environment.NewLine + "2. Click 'Uninstall'" + Environment.NewLine + "3. Wait for the process to complete" + Environment.NewLine + "4. Done!");
+        }
+
         private void DEB_Button_Click(object sender, EventArgs e)
         {
             OpenFileDialog DEBFileDialog = new OpenFileDialog();
@@ -452,7 +457,7 @@ namespace Electralyzed
             Install_Button.Enabled = false;
             Uninstall_Button.Enabled = false;
             otherToolsToolStripMenuItem.Enabled = true;
-            O_TextBox.Text = "Ready!";
+            O_TextBox.Text = "Ready when you are!";
             DEB_TextBox.Text = @"C:\";
             action = "0";
         }

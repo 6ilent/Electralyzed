@@ -35,6 +35,10 @@
             this.tweakCompatabilitySheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dEBDownloaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.otherToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quickCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.respringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uICacheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DEB_Label = new System.Windows.Forms.Label();
             this.DEB_Separator = new Bunifu.Framework.UI.BunifuSeparator();
             this.DEB_TextBox = new Bunifu.Framework.UI.BunifuMaterialTextbox();
@@ -44,10 +48,7 @@
             this.Install_Button = new System.Windows.Forms.Button();
             this.Uninstall_Button = new System.Windows.Forms.Button();
             this.O_TextBox = new System.Windows.Forms.TextBox();
-            this.otherToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quickCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.respringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.uICacheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,7 +78,8 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tweakCompatabilitySheetToolStripMenuItem,
             this.dEBDownloaderToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.usageToolStripMenuItem});
             this.helpToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
@@ -109,6 +111,44 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // otherToolsToolStripMenuItem
+            // 
+            this.otherToolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quickCommandsToolStripMenuItem});
+            this.otherToolsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.otherToolsToolStripMenuItem.Name = "otherToolsToolStripMenuItem";
+            this.otherToolsToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.otherToolsToolStripMenuItem.Text = "Other Tools";
+            // 
+            // quickCommandsToolStripMenuItem
+            // 
+            this.quickCommandsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.quickCommandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.respringToolStripMenuItem,
+            this.uICacheToolStripMenuItem});
+            this.quickCommandsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.quickCommandsToolStripMenuItem.Name = "quickCommandsToolStripMenuItem";
+            this.quickCommandsToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.quickCommandsToolStripMenuItem.Text = "Quick Commands";
+            // 
+            // respringToolStripMenuItem
+            // 
+            this.respringToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.respringToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.respringToolStripMenuItem.Name = "respringToolStripMenuItem";
+            this.respringToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.respringToolStripMenuItem.Text = "Respring";
+            this.respringToolStripMenuItem.Click += new System.EventHandler(this.respringToolStripMenuItem_Click);
+            // 
+            // uICacheToolStripMenuItem
+            // 
+            this.uICacheToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.uICacheToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.uICacheToolStripMenuItem.Name = "uICacheToolStripMenuItem";
+            this.uICacheToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.uICacheToolStripMenuItem.Text = "UICache";
+            this.uICacheToolStripMenuItem.Click += new System.EventHandler(this.uICacheToolStripMenuItem_Click);
             // 
             // DEB_Label
             // 
@@ -233,43 +273,14 @@
             this.O_TextBox.Text = "Ready when you are!";
             this.O_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // otherToolsToolStripMenuItem
+            // usageToolStripMenuItem
             // 
-            this.otherToolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quickCommandsToolStripMenuItem});
-            this.otherToolsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.otherToolsToolStripMenuItem.Name = "otherToolsToolStripMenuItem";
-            this.otherToolsToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
-            this.otherToolsToolStripMenuItem.Text = "Other Tools";
-            // 
-            // quickCommandsToolStripMenuItem
-            // 
-            this.quickCommandsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
-            this.quickCommandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.respringToolStripMenuItem,
-            this.uICacheToolStripMenuItem});
-            this.quickCommandsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.quickCommandsToolStripMenuItem.Name = "quickCommandsToolStripMenuItem";
-            this.quickCommandsToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.quickCommandsToolStripMenuItem.Text = "Quick Commands";
-            // 
-            // respringToolStripMenuItem
-            // 
-            this.respringToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
-            this.respringToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.respringToolStripMenuItem.Name = "respringToolStripMenuItem";
-            this.respringToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.respringToolStripMenuItem.Text = "Respring";
-            this.respringToolStripMenuItem.Click += new System.EventHandler(this.respringToolStripMenuItem_Click);
-            // 
-            // uICacheToolStripMenuItem
-            // 
-            this.uICacheToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
-            this.uICacheToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.uICacheToolStripMenuItem.Name = "uICacheToolStripMenuItem";
-            this.uICacheToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.uICacheToolStripMenuItem.Text = "UICache";
-            this.uICacheToolStripMenuItem.Click += new System.EventHandler(this.uICacheToolStripMenuItem_Click);
+            this.usageToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.usageToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.usageToolStripMenuItem.Name = "usageToolStripMenuItem";
+            this.usageToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.usageToolStripMenuItem.Text = "Usage";
+            this.usageToolStripMenuItem.Click += new System.EventHandler(this.usageToolStripMenuItem_Click);
             // 
             // Electralyzed
             // 
@@ -322,5 +333,6 @@
         private System.Windows.Forms.ToolStripMenuItem quickCommandsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem respringToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uICacheToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usageToolStripMenuItem;
     }
 }
