@@ -26,9 +26,14 @@ namespace Electralyzed
 
         private void LoadUp_Load(object sender, EventArgs e)
         {
-            if (!File.Exists(@"C:\Program Files\7-Zip\7z.exe"))
+            if (!File.Exists(Application.StartupPath + @"\7Z\7z.exe"))
             {
-                MessageBox.Show(@"This application requires 7zip to be installed! Please install and relaunch! (7Zip must be installed in 'C:\Program Files')", "ERROR!", MessageBoxButtons.OK);
+                MessageBox.Show(@"7Zip.exe is not in \7Z", "ERROR!", MessageBoxButtons.OK);
+                Application.Exit();
+            }
+            if (!File.Exists(Application.StartupPath + @"\7Z\7z.dll"))
+            {
+                MessageBox.Show(@"7Zip.dll is not in \7Z", "ERROR!", MessageBoxButtons.OK);
                 Application.Exit();
             }
             Ver_Label.Text += Properties.Settings.Default.versionNum;
@@ -36,15 +41,14 @@ namespace Electralyzed
 
         private void Connect_Button_Click(object sender, EventArgs e)
         {
-            ip = IP_TextBox.Text;
-            username = Username_TextBox.Text;
+            ip = IP_TextBox.Text;;
             password = Password_TextBox.Text;
 
             SessionOptions sessionOptions = new SessionOptions
             {
                 Protocol = Protocol.Sftp,
                 HostName = ip,
-                UserName = username,
+                UserName = "root",
                 Password = password,
                 GiveUpSecurityAndAcceptAnySshHostKey = true
             };
@@ -57,7 +61,7 @@ namespace Electralyzed
                 C_Label.Text = "Success!";
                 session.Close();
                 this.Hide();
-                Electralyzed EM = new Electralyzed(IP_TextBox.Text, Username_TextBox.Text, Password_TextBox.Text);
+                Electralyzed EM = new Electralyzed(IP_TextBox.Text, Password_TextBox.Text);
                 EM.ShowDialog();
             }
         }

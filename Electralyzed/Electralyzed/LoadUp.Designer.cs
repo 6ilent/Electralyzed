@@ -31,20 +31,19 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoadUp));
             this.GPanel = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.UPD_Label = new System.Windows.Forms.LinkLabel();
             this.C_Label = new System.Windows.Forms.Label();
             this.Connect_Button = new System.Windows.Forms.Button();
             this.Password_TextBox = new System.Windows.Forms.TextBox();
-            this.Username_TextBox = new System.Windows.Forms.TextBox();
             this.Password_Label = new System.Windows.Forms.Label();
             this.IP_TextBox = new System.Windows.Forms.TextBox();
             this.Password_Separator = new Bunifu.Framework.UI.BunifuSeparator();
-            this.Username_Label = new System.Windows.Forms.Label();
-            this.Username_Separator = new Bunifu.Framework.UI.BunifuSeparator();
+            this.Connect_Label = new System.Windows.Forms.Label();
+            this.Connect_Separator = new Bunifu.Framework.UI.BunifuSeparator();
             this.IP_Label = new System.Windows.Forms.Label();
             this.IP_Separator = new Bunifu.Framework.UI.BunifuSeparator();
-            this.Elipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.Ver_Label = new System.Windows.Forms.Label();
-            this.UPD_Label = new System.Windows.Forms.LinkLabel();
+            this.Elipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.GPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,12 +55,11 @@
             this.GPanel.Controls.Add(this.C_Label);
             this.GPanel.Controls.Add(this.Connect_Button);
             this.GPanel.Controls.Add(this.Password_TextBox);
-            this.GPanel.Controls.Add(this.Username_TextBox);
             this.GPanel.Controls.Add(this.Password_Label);
             this.GPanel.Controls.Add(this.IP_TextBox);
             this.GPanel.Controls.Add(this.Password_Separator);
-            this.GPanel.Controls.Add(this.Username_Label);
-            this.GPanel.Controls.Add(this.Username_Separator);
+            this.GPanel.Controls.Add(this.Connect_Label);
+            this.GPanel.Controls.Add(this.Connect_Separator);
             this.GPanel.Controls.Add(this.IP_Label);
             this.GPanel.Controls.Add(this.IP_Separator);
             this.GPanel.Controls.Add(this.Ver_Label);
@@ -75,6 +73,22 @@
             this.GPanel.Quality = 10;
             this.GPanel.Size = new System.Drawing.Size(500, 300);
             this.GPanel.TabIndex = 0;
+            // 
+            // UPD_Label
+            // 
+            this.UPD_Label.ActiveLinkColor = System.Drawing.Color.LightSteelBlue;
+            this.UPD_Label.AutoSize = true;
+            this.UPD_Label.BackColor = System.Drawing.Color.Transparent;
+            this.UPD_Label.LinkColor = System.Drawing.Color.LightSteelBlue;
+            this.UPD_Label.Location = new System.Drawing.Point(441, 278);
+            this.UPD_Label.Name = "UPD_Label";
+            this.UPD_Label.Size = new System.Drawing.Size(47, 13);
+            this.UPD_Label.TabIndex = 6;
+            this.UPD_Label.TabStop = true;
+            this.UPD_Label.Text = "Updates";
+            this.UPD_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.UPD_Label.VisitedLinkColor = System.Drawing.Color.LightSteelBlue;
+            this.UPD_Label.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.UPD_Label_LinkClicked);
             // 
             // C_Label
             // 
@@ -104,7 +118,7 @@
             this.Password_TextBox.BackColor = System.Drawing.Color.White;
             this.Password_TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Password_TextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
-            this.Password_TextBox.Location = new System.Drawing.Point(195, 191);
+            this.Password_TextBox.Location = new System.Drawing.Point(195, 120);
             this.Password_TextBox.Name = "Password_TextBox";
             this.Password_TextBox.PasswordChar = '*';
             this.Password_TextBox.Size = new System.Drawing.Size(110, 13);
@@ -112,25 +126,13 @@
             this.Password_TextBox.Text = "alpine";
             this.Password_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Username_TextBox
-            // 
-            this.Username_TextBox.BackColor = System.Drawing.Color.White;
-            this.Username_TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Username_TextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
-            this.Username_TextBox.Location = new System.Drawing.Point(195, 120);
-            this.Username_TextBox.Name = "Username_TextBox";
-            this.Username_TextBox.Size = new System.Drawing.Size(110, 13);
-            this.Username_TextBox.TabIndex = 3;
-            this.Username_TextBox.Text = "root";
-            this.Username_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // Password_Label
             // 
             this.Password_Label.AutoSize = true;
             this.Password_Label.BackColor = System.Drawing.Color.Transparent;
             this.Password_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Password_Label.ForeColor = System.Drawing.Color.White;
-            this.Password_Label.Location = new System.Drawing.Point(206, 151);
+            this.Password_Label.Location = new System.Drawing.Point(206, 80);
             this.Password_Label.Name = "Password_Label";
             this.Password_Label.Size = new System.Drawing.Size(86, 20);
             this.Password_Label.TabIndex = 2;
@@ -154,37 +156,37 @@
             this.Password_Separator.ForeColor = System.Drawing.Color.White;
             this.Password_Separator.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Password_Separator.LineThickness = 2;
-            this.Password_Separator.Location = new System.Drawing.Point(195, 174);
+            this.Password_Separator.Location = new System.Drawing.Point(195, 103);
             this.Password_Separator.Name = "Password_Separator";
             this.Password_Separator.Size = new System.Drawing.Size(110, 10);
             this.Password_Separator.TabIndex = 1;
             this.Password_Separator.Transparency = 255;
             this.Password_Separator.Vertical = false;
             // 
-            // Username_Label
+            // Connect_Label
             // 
-            this.Username_Label.AutoSize = true;
-            this.Username_Label.BackColor = System.Drawing.Color.Transparent;
-            this.Username_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Username_Label.ForeColor = System.Drawing.Color.White;
-            this.Username_Label.Location = new System.Drawing.Point(206, 80);
-            this.Username_Label.Name = "Username_Label";
-            this.Username_Label.Size = new System.Drawing.Size(91, 20);
-            this.Username_Label.TabIndex = 2;
-            this.Username_Label.Text = "Username";
+            this.Connect_Label.AutoSize = true;
+            this.Connect_Label.BackColor = System.Drawing.Color.Transparent;
+            this.Connect_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Connect_Label.ForeColor = System.Drawing.Color.White;
+            this.Connect_Label.Location = new System.Drawing.Point(212, 189);
+            this.Connect_Label.Name = "Connect_Label";
+            this.Connect_Label.Size = new System.Drawing.Size(76, 20);
+            this.Connect_Label.TabIndex = 2;
+            this.Connect_Label.Text = "Connect";
             // 
-            // Username_Separator
+            // Connect_Separator
             // 
-            this.Username_Separator.BackColor = System.Drawing.Color.Transparent;
-            this.Username_Separator.ForeColor = System.Drawing.Color.White;
-            this.Username_Separator.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Username_Separator.LineThickness = 2;
-            this.Username_Separator.Location = new System.Drawing.Point(195, 103);
-            this.Username_Separator.Name = "Username_Separator";
-            this.Username_Separator.Size = new System.Drawing.Size(110, 10);
-            this.Username_Separator.TabIndex = 1;
-            this.Username_Separator.Transparency = 255;
-            this.Username_Separator.Vertical = false;
+            this.Connect_Separator.BackColor = System.Drawing.Color.Transparent;
+            this.Connect_Separator.ForeColor = System.Drawing.Color.White;
+            this.Connect_Separator.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.Connect_Separator.LineThickness = 2;
+            this.Connect_Separator.Location = new System.Drawing.Point(195, 212);
+            this.Connect_Separator.Name = "Connect_Separator";
+            this.Connect_Separator.Size = new System.Drawing.Size(110, 10);
+            this.Connect_Separator.TabIndex = 1;
+            this.Connect_Separator.Transparency = 255;
+            this.Connect_Separator.Vertical = false;
             // 
             // IP_Label
             // 
@@ -211,11 +213,6 @@
             this.IP_Separator.Transparency = 255;
             this.IP_Separator.Vertical = false;
             // 
-            // Elipse
-            // 
-            this.Elipse.ElipseRadius = 5;
-            this.Elipse.TargetControl = this;
-            // 
             // Ver_Label
             // 
             this.Ver_Label.AutoSize = true;
@@ -228,21 +225,10 @@
             this.Ver_Label.TabIndex = 0;
             this.Ver_Label.Text = "Version ";
             // 
-            // UPD_Label
+            // Elipse
             // 
-            this.UPD_Label.ActiveLinkColor = System.Drawing.Color.LightSteelBlue;
-            this.UPD_Label.AutoSize = true;
-            this.UPD_Label.BackColor = System.Drawing.Color.Transparent;
-            this.UPD_Label.LinkColor = System.Drawing.Color.LightSteelBlue;
-            this.UPD_Label.Location = new System.Drawing.Point(441, 278);
-            this.UPD_Label.Name = "UPD_Label";
-            this.UPD_Label.Size = new System.Drawing.Size(47, 13);
-            this.UPD_Label.TabIndex = 6;
-            this.UPD_Label.TabStop = true;
-            this.UPD_Label.Text = "Updates";
-            this.UPD_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.UPD_Label.VisitedLinkColor = System.Drawing.Color.LightSteelBlue;
-            this.UPD_Label.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.UPD_Label_LinkClicked);
+            this.Elipse.ElipseRadius = 5;
+            this.Elipse.TargetControl = this;
             // 
             // LoadUp
             // 
@@ -269,18 +255,17 @@
         private Bunifu.Framework.UI.BunifuGradientPanel GPanel;
         private System.Windows.Forms.Button Connect_Button;
         private System.Windows.Forms.TextBox Password_TextBox;
-        private System.Windows.Forms.TextBox Username_TextBox;
         private System.Windows.Forms.Label Password_Label;
         private System.Windows.Forms.TextBox IP_TextBox;
         private Bunifu.Framework.UI.BunifuSeparator Password_Separator;
-        private System.Windows.Forms.Label Username_Label;
-        private Bunifu.Framework.UI.BunifuSeparator Username_Separator;
         private System.Windows.Forms.Label IP_Label;
         private Bunifu.Framework.UI.BunifuSeparator IP_Separator;
         private Bunifu.Framework.UI.BunifuElipse Elipse;
         private System.Windows.Forms.Label C_Label;
         private System.Windows.Forms.Label Ver_Label;
         private System.Windows.Forms.LinkLabel UPD_Label;
+        private System.Windows.Forms.Label Connect_Label;
+        private Bunifu.Framework.UI.BunifuSeparator Connect_Separator;
     }
 }
 

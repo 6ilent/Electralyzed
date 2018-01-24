@@ -35,6 +35,9 @@
             this.tweakCompatabilitySheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dEBDownloaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.whatCanIDoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportABugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.otherToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quickCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.respringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,7 +51,6 @@
             this.Install_Button = new System.Windows.Forms.Button();
             this.Uninstall_Button = new System.Windows.Forms.Button();
             this.O_TextBox = new System.Windows.Forms.TextBox();
-            this.usageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,7 +81,9 @@
             this.tweakCompatabilitySheetToolStripMenuItem,
             this.dEBDownloaderToolStripMenuItem,
             this.aboutToolStripMenuItem,
-            this.usageToolStripMenuItem});
+            this.usageToolStripMenuItem,
+            this.whatCanIDoToolStripMenuItem,
+            this.reportABugToolStripMenuItem});
             this.helpToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
@@ -111,6 +115,33 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // usageToolStripMenuItem
+            // 
+            this.usageToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.usageToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.usageToolStripMenuItem.Name = "usageToolStripMenuItem";
+            this.usageToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.usageToolStripMenuItem.Text = "Usage";
+            this.usageToolStripMenuItem.Click += new System.EventHandler(this.usageToolStripMenuItem_Click);
+            // 
+            // whatCanIDoToolStripMenuItem
+            // 
+            this.whatCanIDoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.whatCanIDoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.whatCanIDoToolStripMenuItem.Name = "whatCanIDoToolStripMenuItem";
+            this.whatCanIDoToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.whatCanIDoToolStripMenuItem.Text = "What Can I Do?";
+            this.whatCanIDoToolStripMenuItem.Click += new System.EventHandler(this.whatCanIDoToolStripMenuItem_Click);
+            // 
+            // reportABugToolStripMenuItem
+            // 
+            this.reportABugToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.reportABugToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.reportABugToolStripMenuItem.Name = "reportABugToolStripMenuItem";
+            this.reportABugToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.reportABugToolStripMenuItem.Text = "Report A Bug";
+            this.reportABugToolStripMenuItem.Click += new System.EventHandler(this.reportABugToolStripMenuItem_Click);
             // 
             // otherToolsToolStripMenuItem
             // 
@@ -273,15 +304,6 @@
             this.O_TextBox.Text = "Ready when you are!";
             this.O_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // usageToolStripMenuItem
-            // 
-            this.usageToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
-            this.usageToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.usageToolStripMenuItem.Name = "usageToolStripMenuItem";
-            this.usageToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.usageToolStripMenuItem.Text = "Usage";
-            this.usageToolStripMenuItem.Click += new System.EventHandler(this.usageToolStripMenuItem_Click);
-            // 
             // Electralyzed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -334,5 +356,7 @@
         private System.Windows.Forms.ToolStripMenuItem respringToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uICacheToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem whatCanIDoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportABugToolStripMenuItem;
     }
 }

@@ -16,16 +16,15 @@ namespace Electralyzed
 {
     public partial class Electralyzed : Form
     {
-        public Electralyzed(string IP_Textbox, string Username_TextBox, string Password_TextBox)
+        public Electralyzed(string IP_Textbox, string Password_TextBox)
         {
             InitializeComponent();
             ip = IP_Textbox;
-            username = Username_TextBox;
             password = Password_TextBox;
         }
 
         //GLOBAL VARIABLES
-        string ip, username, password, action = "0", EDir = @"C:\E_Temp";
+        string ip, password, action = "0", EDir = @"C:\E_Temp";
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -44,12 +43,22 @@ namespace Electralyzed
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Developed by 6ilent" + Environment.NewLine + "SFTP Protocols By WinSCP" + Environment.NewLine + "File Decompressing Library By 7Zip");
+            MessageBox.Show("Developed by 6ilent" + Environment.NewLine + "SFTP Protocols By WinSCP" + Environment.NewLine + "File Decompressing Library By 7Zip (I used parts of the 7-Zip program, 7-Zip is licensed under the GNU LGPL license, www.7-zip.org", "About", MessageBoxButtons.OK);
         }
 
         private void usageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Install:" + Environment.NewLine + "1. Select a DEB you want to install" + Environment.NewLine + "2. Click 'Install'" + Environment.NewLine + "3. Wait for the process to complete" + Environment.NewLine + "4. Done!" + Environment.NewLine + Environment.NewLine + "Uninstall:" + Environment.NewLine + "1. Select the SAME DEB you used for install" + Environment.NewLine + "2. Click 'Uninstall'" + Environment.NewLine + "3. Wait for the process to complete" + Environment.NewLine + "4. Done!");
+            MessageBox.Show("Install:" + Environment.NewLine + "1. Select a DEB you want to install" + Environment.NewLine + "2. Click 'Install'" + Environment.NewLine + "3. Wait for the process to complete" + Environment.NewLine + "4. Done!" + Environment.NewLine + Environment.NewLine + "Uninstall:" + Environment.NewLine + "1. Select the SAME DEB you used for install" + Environment.NewLine + "2. Click 'Uninstall'" + Environment.NewLine + "3. Wait for the process to complete" + Environment.NewLine + "4. Done!", "Usage", MessageBoxButtons.OK);
+        }
+
+        private void whatCanIDoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Currently I Can:" + Environment.NewLine + Environment.NewLine + "Install Tweaks and Themes" + Environment.NewLine + "Uninstall Tweaks and Themes" + Environment.NewLine + "Execute some simple SSH commands", "What Can I Do?", MessageBoxButtons.OK);
+        }
+
+        private void reportABugToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/6ilent/Electralyzed/issues");
         }
 
         private void DEB_Button_Click(object sender, EventArgs e)
@@ -107,7 +116,7 @@ namespace Electralyzed
             {
                 Protocol = Protocol.Sftp,
                 HostName = ip,
-                UserName = username,
+                UserName = "root",
                 Password = password,
                 GiveUpSecurityAndAcceptAnySshHostKey = true
             };
@@ -145,8 +154,8 @@ namespace Electralyzed
             //Extracting deb
             ExtractDEB();
 
-            //Extracting .lzma
-            ExtractLZMA();
+            //Extracting .lzma or .gz
+            ExtractDataFrom();
 
             //Extracting data.tar
             ExtractDATA();
@@ -185,41 +194,59 @@ namespace Electralyzed
             }
         }
 
-        private void ExtractLZMA()
+        private void ExtractDataFrom()
         {
             O_TextBox.AppendText(Environment.NewLine + "");
-            O_TextBox.AppendText(Environment.NewLine + "Unpacking 'data.tar.lzma'...");
+            O_TextBox.AppendText(Environment.NewLine + "Unpacking to 'data.tar'...");
             var processStartInfo = new ProcessStartInfo();
-            processStartInfo.FileName = @"C:\Program Files\7-Zip\7z.exe";
+            processStartInfo.FileName = Application.StartupPath + @"\7Z\7z.exe";
             processStartInfo.Arguments = @"e C:\E_temp\data.tar.lzma";
-            O_TextBox.AppendText(Environment.NewLine + "Checking for duplicates...");
-            if (File.Exists(@"data.tar"))
+            var proc = Process.Start(processStartInfo);
+            proc.WaitForExit();
+
+            if (File.Exists(Application.StartupPath + @"\data.tar"))
             {
-                O_TextBox.AppendText(Environment.NewLine + "Duplicate found! Removing...");
+                O_TextBox.AppendText(Environment.NewLine + "Unpacked! Moving...");
+                File.Copy(@"data.tar", @"C:\E_temp\data.tar");
+                O_TextBox.AppendText(Environment.NewLine + "Moved!");
                 File.Delete(@"data.tar");
-                O_TextBox.AppendText(Environment.NewLine + "Removed!");
             }
             else
             {
-                O_TextBox.AppendText(Environment.NewLine + "No Duplicates found!");
+                O_TextBox.AppendText(Environment.NewLine + "File must be 'data.tar.gz'");
             }
-            var proc = Process.Start(processStartInfo);
-            proc.WaitForExit();
-            O_TextBox.AppendText(Environment.NewLine + "Unpacked! Moving...");
-            File.Copy(@"data.tar", @"C:\E_temp\data.tar");
-            O_TextBox.AppendText(Environment.NewLine + "Moved!");
-            File.Delete(@"data.tar");
         }
 
         private void ExtractDATA()
         {
             O_TextBox.AppendText(Environment.NewLine + "");
-            O_TextBox.AppendText(Environment.NewLine + "Unpacking 'data.tar'...");
-            using (ArchiveFile tardataFile = new ArchiveFile(@"C:\E_temp\data.tar"))
+            if (File.Exists(EDir + @"\data.tar"))
             {
-                tardataFile.Extract(EDir);
-                O_TextBox.AppendText(Environment.NewLine + "Unpacked 'data.tar'!");
+                O_TextBox.AppendText(Environment.NewLine + "Unpacking 'data.tar'...");
+                using (ArchiveFile tardataFile = new ArchiveFile(@"C:\E_temp\data.tar"))
+                {
+                    tardataFile.Extract(EDir);
+                }
             }
+            else if (File.Exists(EDir + @"\data.tar.gz"))
+            {
+                O_TextBox.AppendText(Environment.NewLine + "File is 'data.tar.gz'! Rerunning method...");
+                O_TextBox.AppendText(Environment.NewLine + "Unpacking 'data.tar'...");
+                var processStartInfo = new ProcessStartInfo();
+                processStartInfo.FileName = Application.StartupPath + @"\7Z\7z.exe";
+                processStartInfo.Arguments = @"e C:\E_temp\data.tar.gz";
+                var proc = Process.Start(processStartInfo);
+                proc.WaitForExit();
+                File.Copy(@"data.tar", @"C:\E_temp\data.tar");
+                File.Delete(@"data.tar");
+                O_TextBox.AppendText(Environment.NewLine + "Method ran successfully! Unpacking 'data.tar'...");
+                using (ArchiveFile tar2dataFile = new ArchiveFile(@"C:\E_temp\data.tar"))
+                {
+                    tar2dataFile.Extract(EDir);
+                }
+            }
+
+            O_TextBox.AppendText(Environment.NewLine + "Unpacked 'data.tar'!");
         }
 
         private void StartAction()
@@ -231,7 +258,7 @@ namespace Electralyzed
             {
                 Protocol = Protocol.Sftp,
                 HostName = ip,
-                UserName = username,
+                UserName = "root",
                 Password = password,
                 GiveUpSecurityAndAcceptAnySshHostKey = true
             };
