@@ -14,7 +14,7 @@ Check the [Release](https://github.com/6ilent/electralyzed/releases) tab for mor
 * Add IPA Signing
 * Fix window close button (Use the Exit button to close for now)
 * Add installation/uninstallation of multiple Tweaks/Themes
-* Redo “unistall” method with bash scripts
+* Redo “uninstall” method with bash scripts
 * Video demo
 ---
 > By 6ilent ([@Zer0Entry](https://twitter.com/zer0entry), [6ilent](http://reddit.com/user/6ilent))
