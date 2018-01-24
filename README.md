@@ -8,6 +8,7 @@ Check the [Release](https://github.com/6ilent/electralyzed/releases) tab for mor
 [Screenshots of Electralyzed](https://imgur.com/a/Diyfx)
 ---
 ### To do list
+* Add installation for 'ApplicationSupport' folders in Tweaks
 * Add support for Folders that are placed in other directories (Ex. Zeppelin: /Library)
 * Add automatic update checks
 * Add IPA Signing
