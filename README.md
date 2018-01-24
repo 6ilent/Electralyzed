@@ -5,7 +5,7 @@
 > Electralyzed is a simple and easy to use debian package installer for the Electra Jailbreak Toolkit.
 This tool can install Tweaks and Themes that are compatible with the Electra Jailbreak Toolkit.
 Check the [Release](https://github.com/6ilent/electralyzed/releases) tab for more info on what the latest version has to offer!
-[Screenshots of Electralyzed](https://imgur.com/a/Diyfx)
+[Screenshots of Electralyzed](https://imgur.com/a/YxWoL)
 ---
 ### To do list
 * Add installation for 'ApplicationSupport' folders in Tweaks
