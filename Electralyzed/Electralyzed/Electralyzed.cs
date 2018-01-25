@@ -31,6 +31,18 @@ namespace Electralyzed
             Application.Exit();
         }
 
+        protected override void OnMouseDown(MouseEventArgs e)
+
+        {
+            base.OnMouseDown(e);
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Capture = false;
+                Message msg = Message.Create(this.Handle, 0XA1, new IntPtr(2), IntPtr.Zero);
+                this.WndProc(ref msg);
+            }
+        }
+
         private void tweakCompatabilitySheetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://docs.google.com/spreadsheets/d/1YptWW_bBdEQ9naYAfiZ2Aj4H93Y56I4xSYI29u4q_-Y/edit#gid=0");
@@ -361,6 +373,25 @@ namespace Electralyzed
                 O_TextBox.AppendText(Environment.NewLine + "No PreferenceBundles found.");
             }
 
+            //TWEAK - APPLICATION SUPPORT
+            O_TextBox.AppendText(Environment.NewLine + "");
+            if (Directory.Exists(EDir + @"\Library\Application Support\"))
+            {
+                O_TextBox.AppendText(Environment.NewLine + "Local Application Support folder found! Installing...");
+                string[] ASArray = Directory.GetDirectories(EDir + @"\Library\Application Support\");
+                for (int AS = 0; AS < ASArray.Length; AS++)
+                {
+                    O_TextBox.AppendText(Environment.NewLine + "Placing " + ASArray[AS] + "...");
+                    session.PutFiles(ASArray[AS], "/bootstrap/Library/Application Support/");
+                    O_TextBox.AppendText(Environment.NewLine + "Placed " + ASArray[AS]);
+                }
+                O_TextBox.AppendText(Environment.NewLine + "Finished installing Application Support!");
+            }
+            else
+            {
+                O_TextBox.AppendText(Environment.NewLine + "No Application Support found.");
+            }
+
             //FINISHED!
             O_TextBox.AppendText(Environment.NewLine + "");
             O_TextBox.AppendText(Environment.NewLine + "Finished!");
@@ -450,6 +481,27 @@ namespace Electralyzed
             else
             {
                 O_TextBox.AppendText(Environment.NewLine + "No PreferenceBundles found.");
+            }
+
+            //TWEAK - APPLICATIONSUPPORT
+            O_TextBox.AppendText(Environment.NewLine + "");
+            if (Directory.Exists(EDir + @"\Library\Application Support\"))
+            {
+                O_TextBox.AppendText(Environment.NewLine + "Local Application Support folder found! Installing...");
+                string[] ASArray = Directory.GetDirectories(EDir + @"\Library\Application Support\");
+                string ASFolder; //Actual Folder start on character #37
+                for (int AS = 0; AS < ASArray.Length; AS++)
+                {
+                    ASFolder = ASArray[AS].Substring(37);
+                    O_TextBox.AppendText(Environment.NewLine + "Removing " + ASFolder + "...");
+                    session.RemoveFiles("/bootstrap/Library/Application Support/" + ASFolder);
+                    O_TextBox.AppendText(Environment.NewLine + "Removed " + ASFolder);
+                }
+                O_TextBox.AppendText(Environment.NewLine + "Finished uninstalling Application Support!");
+            }
+            else
+            {
+                O_TextBox.AppendText(Environment.NewLine + "No Application Support found.");
             }
 
             //FINISHED!

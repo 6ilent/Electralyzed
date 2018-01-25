@@ -39,6 +39,11 @@ namespace Electralyzed
             Ver_Label.Text += Properties.Settings.Default.versionNum;
         }
 
+        private void Exit_Label_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void Connect_Button_Click(object sender, EventArgs e)
         {
             ip = IP_TextBox.Text;;
