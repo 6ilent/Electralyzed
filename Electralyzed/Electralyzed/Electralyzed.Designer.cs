@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Electralyzed));
             this.MStrip = new System.Windows.Forms.MenuStrip();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,6 +52,7 @@
             this.Install_Button = new System.Windows.Forms.Button();
             this.Uninstall_Button = new System.Windows.Forms.Button();
             this.O_TextBox = new System.Windows.Forms.TextBox();
+            this.Elipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.MStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -168,7 +170,7 @@
             this.respringToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
             this.respringToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.respringToolStripMenuItem.Name = "respringToolStripMenuItem";
-            this.respringToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.respringToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.respringToolStripMenuItem.Text = "Respring";
             this.respringToolStripMenuItem.Click += new System.EventHandler(this.respringToolStripMenuItem_Click);
             // 
@@ -177,7 +179,7 @@
             this.uICacheToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
             this.uICacheToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.uICacheToolStripMenuItem.Name = "uICacheToolStripMenuItem";
-            this.uICacheToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.uICacheToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.uICacheToolStripMenuItem.Text = "UICache";
             this.uICacheToolStripMenuItem.Click += new System.EventHandler(this.uICacheToolStripMenuItem_Click);
             // 
@@ -304,6 +306,11 @@
             this.O_TextBox.Text = "Ready when you are!";
             this.O_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // Elipse
+            // 
+            this.Elipse.ElipseRadius = 10;
+            this.Elipse.TargetControl = this;
+            // 
             // Electralyzed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -358,5 +365,6 @@
         private System.Windows.Forms.ToolStripMenuItem usageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem whatCanIDoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportABugToolStripMenuItem;
+        private Bunifu.Framework.UI.BunifuElipse Elipse;
     }
 }

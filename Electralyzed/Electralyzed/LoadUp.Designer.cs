@@ -31,7 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoadUp));
             this.GPanel = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.UPD_Label = new System.Windows.Forms.LinkLabel();
+            this.Exit_Label = new System.Windows.Forms.Label();
+            this.G_Label = new System.Windows.Forms.LinkLabel();
             this.C_Label = new System.Windows.Forms.Label();
             this.Connect_Button = new System.Windows.Forms.Button();
             this.Password_TextBox = new System.Windows.Forms.TextBox();
@@ -44,7 +45,6 @@
             this.IP_Separator = new Bunifu.Framework.UI.BunifuSeparator();
             this.Ver_Label = new System.Windows.Forms.Label();
             this.Elipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.Exit_Label = new System.Windows.Forms.Label();
             this.GPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +53,7 @@
             this.GPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GPanel.BackgroundImage")));
             this.GPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.GPanel.Controls.Add(this.Exit_Label);
-            this.GPanel.Controls.Add(this.UPD_Label);
+            this.GPanel.Controls.Add(this.G_Label);
             this.GPanel.Controls.Add(this.C_Label);
             this.GPanel.Controls.Add(this.Connect_Button);
             this.GPanel.Controls.Add(this.Password_TextBox);
@@ -76,21 +76,34 @@
             this.GPanel.Size = new System.Drawing.Size(500, 300);
             this.GPanel.TabIndex = 0;
             // 
-            // UPD_Label
+            // Exit_Label
             // 
-            this.UPD_Label.ActiveLinkColor = System.Drawing.Color.LightSteelBlue;
-            this.UPD_Label.AutoSize = true;
-            this.UPD_Label.BackColor = System.Drawing.Color.Transparent;
-            this.UPD_Label.LinkColor = System.Drawing.Color.LightSteelBlue;
-            this.UPD_Label.Location = new System.Drawing.Point(441, 278);
-            this.UPD_Label.Name = "UPD_Label";
-            this.UPD_Label.Size = new System.Drawing.Size(47, 13);
-            this.UPD_Label.TabIndex = 6;
-            this.UPD_Label.TabStop = true;
-            this.UPD_Label.Text = "Updates";
-            this.UPD_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.UPD_Label.VisitedLinkColor = System.Drawing.Color.LightSteelBlue;
-            this.UPD_Label.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.UPD_Label_LinkClicked);
+            this.Exit_Label.AutoSize = true;
+            this.Exit_Label.BackColor = System.Drawing.Color.Transparent;
+            this.Exit_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Exit_Label.ForeColor = System.Drawing.Color.LightSteelBlue;
+            this.Exit_Label.Location = new System.Drawing.Point(469, 9);
+            this.Exit_Label.Name = "Exit_Label";
+            this.Exit_Label.Size = new System.Drawing.Size(19, 18);
+            this.Exit_Label.TabIndex = 7;
+            this.Exit_Label.Text = "X";
+            this.Exit_Label.Click += new System.EventHandler(this.Exit_Label_Click);
+            // 
+            // G_Label
+            // 
+            this.G_Label.ActiveLinkColor = System.Drawing.Color.LightSteelBlue;
+            this.G_Label.AutoSize = true;
+            this.G_Label.BackColor = System.Drawing.Color.Transparent;
+            this.G_Label.LinkColor = System.Drawing.Color.LightSteelBlue;
+            this.G_Label.Location = new System.Drawing.Point(448, 278);
+            this.G_Label.Name = "G_Label";
+            this.G_Label.Size = new System.Drawing.Size(40, 13);
+            this.G_Label.TabIndex = 6;
+            this.G_Label.TabStop = true;
+            this.G_Label.Text = "GitHub";
+            this.G_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.G_Label.VisitedLinkColor = System.Drawing.Color.LightSteelBlue;
+            this.G_Label.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.G_Label_LinkClicked);
             // 
             // C_Label
             // 
@@ -229,21 +242,8 @@
             // 
             // Elipse
             // 
-            this.Elipse.ElipseRadius = 5;
+            this.Elipse.ElipseRadius = 10;
             this.Elipse.TargetControl = this;
-            // 
-            // Exit_Label
-            // 
-            this.Exit_Label.AutoSize = true;
-            this.Exit_Label.BackColor = System.Drawing.Color.Transparent;
-            this.Exit_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Exit_Label.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.Exit_Label.Location = new System.Drawing.Point(469, 9);
-            this.Exit_Label.Name = "Exit_Label";
-            this.Exit_Label.Size = new System.Drawing.Size(19, 18);
-            this.Exit_Label.TabIndex = 7;
-            this.Exit_Label.Text = "X";
-            this.Exit_Label.Click += new System.EventHandler(this.Exit_Label_Click);
             // 
             // LoadUp
             // 
@@ -278,7 +278,7 @@
         private Bunifu.Framework.UI.BunifuElipse Elipse;
         private System.Windows.Forms.Label C_Label;
         private System.Windows.Forms.Label Ver_Label;
-        private System.Windows.Forms.LinkLabel UPD_Label;
+        private System.Windows.Forms.LinkLabel G_Label;
         private System.Windows.Forms.Label Connect_Label;
         private Bunifu.Framework.UI.BunifuSeparator Connect_Separator;
         private System.Windows.Forms.Label Exit_Label;

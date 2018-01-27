@@ -148,6 +148,7 @@ namespace Electralyzed
             session.Close();
         }
 
+        //ACTUAL DEB INSTALL
         private void DisabledState()
         {
             exitToolStripMenuItem.Enabled = false;
@@ -306,7 +307,7 @@ namespace Electralyzed
                 for (int themes  = 0; themes < themesArray.Length; themes++)
                 {
                     O_TextBox.AppendText(Environment.NewLine + "Placing " + themesArray[themes] + "...");
-                    session.PutFiles(themesArray[themes], "/System/Library/Themes/");
+                    session.PutFiles(themesArray[themes], "/bootstrap/Library/Themes/");
                     O_TextBox.AppendText(Environment.NewLine + "Placed " + themesArray[themes]);
                 }
                 O_TextBox.AppendText(Environment.NewLine + "Finished installing " + DEB_TextBox.Text + "!");
@@ -410,7 +411,7 @@ namespace Electralyzed
                 {
                     TFolder = themesArray[themes].Substring(25);
                     O_TextBox.AppendText(Environment.NewLine + "Removing " + TFolder + "...");
-                    session.RemoveFiles("/System/Library/Themes/" + TFolder);
+                    session.RemoveFiles("/bootstrap/Library/Themes/" + TFolder);
                     O_TextBox.AppendText(Environment.NewLine + "Removed " + TFolder);
                 }
                 O_TextBox.AppendText(Environment.NewLine + "Finished uninstalling " + DEB_TextBox.Text + "!");

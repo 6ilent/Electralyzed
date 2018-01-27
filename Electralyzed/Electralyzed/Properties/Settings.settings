@@ -3,7 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="versionNum" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1.1.1</Value>
+      <Value Profile="(Default)">1.1.2</Value>
+    </Setting>
+    <Setting Name="e_versionNum" Type="System.String" Scope="User">
+      <Value Profile="(Default)">112</Value>
     </Setting>
   </Settings>
 </SettingsFile>

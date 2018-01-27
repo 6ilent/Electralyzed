@@ -36,6 +36,7 @@ namespace Electralyzed
                 MessageBox.Show(@"7Zip.dll is not in \7Z", "ERROR!", MessageBoxButtons.OK);
                 Application.Exit();
             }
+            Auto_U();
             Ver_Label.Text += Properties.Settings.Default.versionNum;
         }
 
@@ -71,9 +72,31 @@ namespace Electralyzed
             }
         }
 
-        private void UPD_Label_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void G_Label_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://github.com/6ilent/Electralyzed/releases");
+            Process.Start("https://github.com/6ilent/Electralyzed");
+        }
+
+        private void Auto_U()
+        {
+            WebClient a_fileD = new WebClient();
+            if (File.Exists(Application.StartupPath + @"\a_version.txt"))
+            {
+                File.Delete(Application.StartupPath + @"\a_version.txt");
+            }
+            a_fileD.DownloadFile("https://raw.githubusercontent.com/6ilent/Electralyzed/master/Electralyzed/Other%20Files/version.txt", Application.StartupPath + @"\a_version.txt");
+            string e_version = Properties.Settings.Default.e_versionNum;
+            string a_version = File.ReadAllText(Application.StartupPath + @"\a_version.txt");
+
+            if (e_version != a_version)
+            {
+                DialogResult n_version = MessageBox.Show("You are using an outdated version of Electralyzed! Would you like me to take you take you to GitHub to download the latest version?", "Please Update!", MessageBoxButtons.YesNo);
+                if (n_version == DialogResult.Yes)
+                {
+                    Process.Start("https://github.com/6ilent/Electralyzed/releases");
+                    Application.Exit();
+                }
+            }
         }
     }
 }
