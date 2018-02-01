@@ -8,7 +8,7 @@ Check the [Release](https://github.com/6ilent/electralyzed/releases) tab for mor
 [Screenshots of Electralyzed](https://imgur.com/a/YxWoL)
 ---
 ### To do list
-* Add support for Folders that are placed in other directories (Ex. Zeppelin: /Library)
+* iOS Version of Electralyzed!
 ---
 > By 6ilent ([@Zer0Entry](https://twitter.com/zer0entry), [6ilent](http://reddit.com/user/6ilent))
 If you plan to use any of my code, please give credit. Thanks. Copyright 2018 6ilent
