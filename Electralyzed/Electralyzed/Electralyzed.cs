@@ -26,11 +26,6 @@ namespace Electralyzed
         //GLOBAL VARIABLES
         string ip, password, action = "0", EDir = @"C:\E_Temp";
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         protected override void OnMouseDown(MouseEventArgs e)
 
         {
@@ -41,6 +36,16 @@ namespace Electralyzed
                 Message msg = Message.Create(this.Handle, 0XA1, new IntPtr(2), IntPtr.Zero);
                 this.WndProc(ref msg);
             }
+        }
+
+        private void Exit_Label_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Min_Label_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
 
         private void tweakCompatabilitySheetToolStripMenuItem_Click(object sender, EventArgs e)
@@ -151,7 +156,8 @@ namespace Electralyzed
         //ACTUAL DEB INSTALL
         private void DisabledState()
         {
-            exitToolStripMenuItem.Enabled = false;
+            Exit_Label.Enabled = false;
+            Min_Label.Enabled = false;
             DEB_Button.Enabled = false;
             Install_Button.Enabled = false;
             Uninstall_Button.Enabled = false;
@@ -291,6 +297,7 @@ namespace Electralyzed
             //FINISHED
             //Asks for respring
             Respring(session);
+            DeleteDEB(session);
             Cleanup();
             NormalState();
             session.Close();
@@ -523,6 +530,18 @@ namespace Electralyzed
             }
         }
 
+        private void DeleteDEB(Session session)
+        {
+            O_TextBox.AppendText(Environment.NewLine + "");
+            DialogResult DeleteYN = MessageBox.Show("Do you want me to delete the .deb now that is has been installed?", "Delete .deb?", MessageBoxButtons.YesNo);
+            if (DeleteYN == DialogResult.Yes)
+            {
+                O_TextBox.AppendText(Environment.NewLine + "Deleting...");
+                File.Delete(DEB_TextBox.Text);
+                O_TextBox.AppendText(Environment.NewLine + "Deleted!");
+            }
+        }
+
         private void Cleanup()
         {
             O_TextBox.AppendText(Environment.NewLine + "");
@@ -532,7 +551,8 @@ namespace Electralyzed
 
         private void NormalState()
         {
-            exitToolStripMenuItem.Enabled = true;
+            Exit_Label.Enabled = true;
+            Min_Label.Enabled = true;
             DEB_Button.Enabled = true;
             Install_Button.Enabled = false;
             Uninstall_Button.Enabled = false;

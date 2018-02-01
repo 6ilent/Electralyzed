@@ -3,10 +3,19 @@
   <Profiles />
   <Settings>
     <Setting Name="versionNum" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1.1.2</Value>
+      <Value Profile="(Default)">1.2.0</Value>
     </Setting>
     <Setting Name="e_versionNum" Type="System.String" Scope="User">
-      <Value Profile="(Default)">112</Value>
+      <Value Profile="(Default)">120</Value>
+    </Setting>
+    <Setting Name="e_Pass" Type="System.String" Scope="User">
+      <Value Profile="(Default)">alpine</Value>
+    </Setting>
+    <Setting Name="e_Updates" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="e_IPAdd" Type="System.String" Scope="User">
+      <Value Profile="(Default)">xxx.xxx.x.xxx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

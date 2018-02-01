@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Electralyzed));
             this.MStrip = new System.Windows.Forms.MenuStrip();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tweakCompatabilitySheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dEBDownloaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,14 +52,20 @@
             this.Uninstall_Button = new System.Windows.Forms.Button();
             this.O_TextBox = new System.Windows.Forms.TextBox();
             this.Elipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.Exit_Label = new System.Windows.Forms.Label();
+            this.Min_Label = new System.Windows.Forms.Label();
+            this.Panel_L = new System.Windows.Forms.Panel();
+            this.Panel_B = new System.Windows.Forms.Panel();
+            this.Panel_R = new System.Windows.Forms.Panel();
             this.MStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // MStrip
             // 
             this.MStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.MStrip.BackgroundImage = global::Electralyzed.Properties.Resources.LoadUP_Background;
+            this.MStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.MStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem,
             this.helpToolStripMenuItem,
             this.otherToolsToolStripMenuItem});
             this.MStrip.Location = new System.Drawing.Point(0, 0);
@@ -69,16 +74,10 @@
             this.MStrip.TabIndex = 0;
             this.MStrip.Text = "MStrip";
             // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
             // helpToolStripMenuItem
             // 
+            this.helpToolStripMenuItem.BackgroundImage = global::Electralyzed.Properties.Resources.LoadUP_Background;
+            this.helpToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tweakCompatabilitySheetToolStripMenuItem,
             this.dEBDownloaderToolStripMenuItem,
@@ -94,6 +93,8 @@
             // tweakCompatabilitySheetToolStripMenuItem
             // 
             this.tweakCompatabilitySheetToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.tweakCompatabilitySheetToolStripMenuItem.BackgroundImage = global::Electralyzed.Properties.Resources.LoadUP_Background;
+            this.tweakCompatabilitySheetToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tweakCompatabilitySheetToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.tweakCompatabilitySheetToolStripMenuItem.Name = "tweakCompatabilitySheetToolStripMenuItem";
             this.tweakCompatabilitySheetToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
@@ -103,6 +104,8 @@
             // dEBDownloaderToolStripMenuItem
             // 
             this.dEBDownloaderToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.dEBDownloaderToolStripMenuItem.BackgroundImage = global::Electralyzed.Properties.Resources.LoadUP_Background;
+            this.dEBDownloaderToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.dEBDownloaderToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.dEBDownloaderToolStripMenuItem.Name = "dEBDownloaderToolStripMenuItem";
             this.dEBDownloaderToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
@@ -112,6 +115,8 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.aboutToolStripMenuItem.BackgroundImage = global::Electralyzed.Properties.Resources.LoadUP_Background;
+            this.aboutToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.aboutToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
@@ -121,6 +126,8 @@
             // usageToolStripMenuItem
             // 
             this.usageToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.usageToolStripMenuItem.BackgroundImage = global::Electralyzed.Properties.Resources.LoadUP_Background;
+            this.usageToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.usageToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.usageToolStripMenuItem.Name = "usageToolStripMenuItem";
             this.usageToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
@@ -130,6 +137,8 @@
             // whatCanIDoToolStripMenuItem
             // 
             this.whatCanIDoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.whatCanIDoToolStripMenuItem.BackgroundImage = global::Electralyzed.Properties.Resources.LoadUP_Background;
+            this.whatCanIDoToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.whatCanIDoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.whatCanIDoToolStripMenuItem.Name = "whatCanIDoToolStripMenuItem";
             this.whatCanIDoToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
@@ -139,6 +148,8 @@
             // reportABugToolStripMenuItem
             // 
             this.reportABugToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.reportABugToolStripMenuItem.BackgroundImage = global::Electralyzed.Properties.Resources.LoadUP_Background;
+            this.reportABugToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.reportABugToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.reportABugToolStripMenuItem.Name = "reportABugToolStripMenuItem";
             this.reportABugToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
@@ -147,6 +158,8 @@
             // 
             // otherToolsToolStripMenuItem
             // 
+            this.otherToolsToolStripMenuItem.BackgroundImage = global::Electralyzed.Properties.Resources.LoadUP_Background;
+            this.otherToolsToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.otherToolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.quickCommandsToolStripMenuItem});
             this.otherToolsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
@@ -157,6 +170,8 @@
             // quickCommandsToolStripMenuItem
             // 
             this.quickCommandsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.quickCommandsToolStripMenuItem.BackgroundImage = global::Electralyzed.Properties.Resources.LoadUP_Background;
+            this.quickCommandsToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.quickCommandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.respringToolStripMenuItem,
             this.uICacheToolStripMenuItem});
@@ -168,18 +183,22 @@
             // respringToolStripMenuItem
             // 
             this.respringToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.respringToolStripMenuItem.BackgroundImage = global::Electralyzed.Properties.Resources.LoadUP_Background;
+            this.respringToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.respringToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.respringToolStripMenuItem.Name = "respringToolStripMenuItem";
-            this.respringToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.respringToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.respringToolStripMenuItem.Text = "Respring";
             this.respringToolStripMenuItem.Click += new System.EventHandler(this.respringToolStripMenuItem_Click);
             // 
             // uICacheToolStripMenuItem
             // 
             this.uICacheToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.uICacheToolStripMenuItem.BackgroundImage = global::Electralyzed.Properties.Resources.LoadUP_Background;
+            this.uICacheToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.uICacheToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.uICacheToolStripMenuItem.Name = "uICacheToolStripMenuItem";
-            this.uICacheToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.uICacheToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.uICacheToolStripMenuItem.Text = "UICache";
             this.uICacheToolStripMenuItem.Click += new System.EventHandler(this.uICacheToolStripMenuItem_Click);
             // 
@@ -231,6 +250,8 @@
             // DEB_Button
             // 
             this.DEB_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.DEB_Button.BackgroundImage = global::Electralyzed.Properties.Resources.LoadUP_Background;
+            this.DEB_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.DEB_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.DEB_Button.ForeColor = System.Drawing.Color.White;
             this.DEB_Button.Location = new System.Drawing.Point(228, 89);
@@ -268,6 +289,8 @@
             // Install_Button
             // 
             this.Install_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.Install_Button.BackgroundImage = global::Electralyzed.Properties.Resources.LoadUP_Background;
+            this.Install_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Install_Button.Enabled = false;
             this.Install_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Install_Button.ForeColor = System.Drawing.Color.White;
@@ -282,6 +305,8 @@
             // Uninstall_Button
             // 
             this.Uninstall_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(50)))), ((int)(((byte)(76)))));
+            this.Uninstall_Button.BackgroundImage = global::Electralyzed.Properties.Resources.LoadUP_Background;
+            this.Uninstall_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Uninstall_Button.Enabled = false;
             this.Uninstall_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Uninstall_Button.ForeColor = System.Drawing.Color.White;
@@ -311,12 +336,70 @@
             this.Elipse.ElipseRadius = 10;
             this.Elipse.TargetControl = this;
             // 
+            // Exit_Label
+            // 
+            this.Exit_Label.AutoSize = true;
+            this.Exit_Label.BackColor = System.Drawing.Color.IndianRed;
+            this.Exit_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Exit_Label.ForeColor = System.Drawing.Color.White;
+            this.Exit_Label.Location = new System.Drawing.Point(764, 3);
+            this.Exit_Label.Name = "Exit_Label";
+            this.Exit_Label.Size = new System.Drawing.Size(16, 15);
+            this.Exit_Label.TabIndex = 6;
+            this.Exit_Label.Text = "X";
+            this.Exit_Label.Click += new System.EventHandler(this.Exit_Label_Click);
+            // 
+            // Min_Label
+            // 
+            this.Min_Label.AutoSize = true;
+            this.Min_Label.BackColor = System.Drawing.Color.Gainsboro;
+            this.Min_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Min_Label.ForeColor = System.Drawing.Color.White;
+            this.Min_Label.Location = new System.Drawing.Point(746, 3);
+            this.Min_Label.Name = "Min_Label";
+            this.Min_Label.Size = new System.Drawing.Size(12, 15);
+            this.Min_Label.TabIndex = 7;
+            this.Min_Label.Text = "-";
+            this.Min_Label.Click += new System.EventHandler(this.Min_Label_Click);
+            // 
+            // Panel_L
+            // 
+            this.Panel_L.BackColor = System.Drawing.Color.LightGray;
+            this.Panel_L.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Panel_L.Location = new System.Drawing.Point(0, 24);
+            this.Panel_L.Name = "Panel_L";
+            this.Panel_L.Size = new System.Drawing.Size(3, 357);
+            this.Panel_L.TabIndex = 8;
+            // 
+            // Panel_B
+            // 
+            this.Panel_B.BackColor = System.Drawing.Color.LightGray;
+            this.Panel_B.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Panel_B.Location = new System.Drawing.Point(3, 378);
+            this.Panel_B.Name = "Panel_B";
+            this.Panel_B.Size = new System.Drawing.Size(781, 3);
+            this.Panel_B.TabIndex = 9;
+            // 
+            // Panel_R
+            // 
+            this.Panel_R.BackColor = System.Drawing.Color.LightGray;
+            this.Panel_R.Dock = System.Windows.Forms.DockStyle.Right;
+            this.Panel_R.Location = new System.Drawing.Point(781, 24);
+            this.Panel_R.Name = "Panel_R";
+            this.Panel_R.Size = new System.Drawing.Size(3, 354);
+            this.Panel_R.TabIndex = 10;
+            // 
             // Electralyzed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 381);
+            this.Controls.Add(this.Panel_R);
+            this.Controls.Add(this.Panel_B);
+            this.Controls.Add(this.Panel_L);
+            this.Controls.Add(this.Min_Label);
+            this.Controls.Add(this.Exit_Label);
             this.Controls.Add(this.O_TextBox);
             this.Controls.Add(this.Uninstall_Button);
             this.Controls.Add(this.Install_Button);
@@ -344,7 +427,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip MStrip;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tweakCompatabilitySheetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dEBDownloaderToolStripMenuItem;
@@ -366,5 +448,10 @@
         private System.Windows.Forms.ToolStripMenuItem whatCanIDoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportABugToolStripMenuItem;
         private Bunifu.Framework.UI.BunifuElipse Elipse;
+        private System.Windows.Forms.Label Exit_Label;
+        private System.Windows.Forms.Label Min_Label;
+        private System.Windows.Forms.Panel Panel_R;
+        private System.Windows.Forms.Panel Panel_B;
+        private System.Windows.Forms.Panel Panel_L;
     }
 }
